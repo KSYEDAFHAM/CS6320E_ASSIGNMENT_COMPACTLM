@@ -1,0 +1,55 @@
+{
+  "team_members": [
+    {
+      "name": "Ashna Hussain",
+      "roll_number": "M250279CS"
+    },
+    {
+      "name": "Syed Afham K",
+      "roll_number": "M250540CS"
+    }
+  ],
+
+  "external_resources": [
+    {
+      "title": "Reproducing GPT-2 for Indic Languages",
+      "description": "Community reproduction and checkpoint of GPT-2 trained on English + Hindi (124M). Useful GPT-2 checkpoint for Indic fine-tuning.",
+      "source": "Hugging Face & GitHub"
+    },
+    {
+      "title": "Low-Resource Counterspeech Generation for Indic Languages (Das et al., EACL 2024)",
+      "description": "Uses GPT2-Hindi and GPT2-Bengali for counterspeech generation. Shows evaluation and fine-tuning strategies.",
+      "source": "ACL Anthology"
+    },
+    {
+      "title": "GPT-2 for Hindi (December 2024)",
+      "description": "ArXiv preprint describing GPT-2 style training and Hindi tokenizer (byte-level BPE).",
+      "source": "arXiv"
+    },
+    {
+      "title": "Analysis of Indic Language Capabilities in LLMs (2025)",
+      "description": "Analysis of LLM performance on Indic languages; includes fine-tuning guidance for GPT-style models.",
+      "source": "arXiv"
+    },
+    {
+      "title": "IndicTrans2 — High-Quality Machine Translation for 22 Indian Languages",
+      "description": "Discusses multilingual transformer design, tokenization and training. Concepts transferable to GPT-2 pretraining.",
+      "source": "OpenReview / ResearchGate"
+    },
+    {
+      "title": "IndicDialogue Dataset (2024)",
+      "description": "10-language dialogue corpus including Telugu, Tamil, Hindi, Bengali, etc. Suitable for GPT-2 conversational fine-tuning.",
+      "source": "ScienceDirect"
+    },
+    {
+      "title": "BLOOMZ/BLOOM Indic Language Studies",
+      "description": "Comparative evaluation of GPT-family and BLOOMZ for Indic languages.",
+      "source": "Nature"
+    },
+    {
+      "title": "GPT-2 Training Tutorials for Tamil / Indic Languages",
+      "description": "Practical guides for end-to-end GPT-2 training on Indian languages (tokenizer, dataset prep, HuggingFace).",
+      "source": "Medium / Analytics Vidhya / GitHub"
+    }
+  ]
+}
