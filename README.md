@@ -35,10 +35,9 @@ This project implements compact, sample-efficient language models for Telugu and
 
 ## 👥 Team Information
 
-**Team Name:** [Your Team Name]  
 **Members:**
-- [Member 1 Name] - [Roll Number]
-- [Member 2 Name] - [Roll Number] (if applicable)
+- ASHNA HUSSAIN - M250279CS
+- SYED AFHAM K - M250540CS
 
 ---
 
@@ -77,8 +76,7 @@ This project implements compact, sample-efficient language models for Telugu and
 
 1. **Clone the repository:**
 ```bash
-git clone [your-repo-url]
-cd [repo-name]
+git clone https://github.com/KSYEDAFHAM/CS6320E_ASSIGNMENT_COMPACTLM.git
 ```
 
 2. **Create virtual environment:**
@@ -155,8 +153,8 @@ python train_transformer_telugu_gpt2.py \
   --train_path ./data/train_te.jsonl \
   --valid_path ./data/validation_te.jsonl \
   --output_dir ./models/gpt2_telugu \
-  --epochs 30 \
-  --batch_size 16 \
+  --epochs 70 and 30 \
+  --batch_size 32 \
   --lr 5e-5 \
   --patience 3
 ```
@@ -167,8 +165,8 @@ python train_transformer_telugu_gpt2.py \
   --train_path ./data/train_mr.jsonl \
   --valid_path ./data/validation_mr.jsonl \
   --output_dir ./models/gpt2_marathi \
-  --epochs 30 \
-  --batch_size 16 \
+  --epochs 70 and 15 \
+  --batch_size 32 \
   --lr 5e-5 \
   --patience 3
 ```
@@ -177,14 +175,14 @@ python train_transformer_telugu_gpt2.py \
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | Learning Rate | 5e-5 | Initial learning rate |
-| Batch Size | 16 | Per-device batch size |
-| Gradient Accumulation | 2 | Effective batch size: 32 |
-| Epochs | 30 | Maximum training epochs |
+| Batch Size | 32 | Per-device batch size |
+| Gradient Accumulation | 2 | Effective batch size: 64 |
+| Epochs | 15 and 75 | Maximum training epochs |
 | Warmup Ratio | 0.1 | Learning rate warmup |
 | Early Stopping Patience | 3 | Stop after 3 epochs without improvement |
 | Max Sequence Length | 256 | Maximum tokens per sequence |
 | Optimizer | AdamW | Default from Trainer |
-| LR Scheduler | Cosine | Cosine annealing |
+| LR Scheduler | Cosine with warmup | Cosine annealing |
 | Max Grad Norm | 1.0 | Gradient clipping |
 | FP16 | True | Mixed precision training |
 | Gradient Checkpointing | True | Memory optimization |
@@ -197,7 +195,7 @@ python train_transformer_telugu_gpt2.py \
 5. **Evaluation:** Every epoch
 
 ### Hardware Used
-- **GPU:** [Specify your GPU, e.g., NVIDIA A100 40GB]
+- **GPU:** NVIDIA A100 80GB
 - **Training Time:** [~X hours for Telugu, ~Y hours for Marathi]
 - **Memory Usage:** [Peak GPU memory]
 
@@ -283,38 +281,15 @@ python measure_performance.py --model_path ./models/gpt2_telugu --test_file ./da
 
 | Metric | Value |
 |--------|-------|
-| Test Perplexity | [X.XX] |
-| Cross-Entropy Loss | [X.XX] |
-| Top-1 Accuracy | [XX.X%] |
-| ROUGE-1 | [X.XX] |
-| ROUGE-L | [X.XX] |
-| BLEU | [X.XX] |
-| BERTScore F1 | [X.XX] |
+| Test Perplexity | 1.6068 |
+| Cross-Entropy Loss | 0.4742 |
 
 ### Marathi Model Performance
 
 | Metric | Value |
 |--------|-------|
-| Test Perplexity | [X.XX] |
-| Cross-Entropy Loss | [X.XX] |
-| Top-1 Accuracy | [XX.X%] |
-| ROUGE-1 | [X.XX] |
-| ROUGE-L | [X.XX] |
-| BLEU | [X.XX] |
-| BERTScore F1 | [X.XX] |
-
-### Efficiency Metrics
-
-| Metric | Telugu | Marathi |
-|--------|--------|---------|
-| Total Parameters | [XXX M] | [XXX M] |
-| Trainable Parameters | [XXX M] | [XXX M] |
-| Model Size (MB) | [XXX] | [XXX] |
-| Inference Latency (median, ms) | [X.XX] | [X.XX] |
-| Inference Latency (p95, ms) | [X.XX] | [X.XX] |
-| Throughput (tokens/sec) | [XXX] | [XXX] |
-| FLOPs per token | [XXX M] | [XXX M] |
-| Peak Memory (GB) | [X.XX] | [X.XX] |
+| Test Perplexity | 2.0059 |
+| Cross-Entropy Loss | 0.7169 |
 
 ### Sample Outputs
 
@@ -327,9 +302,9 @@ Confidence: 0.85
 
 #### Marathi Example
 ```
-Input: "[Marathi input text]"
-Predicted: "[Predicted token]"
-Confidence: 0.XX
+Input: "दिलेल्या मराठी बातमीवरून मुख्य घटना दर्शवणारी थोडक्यात आणि नेमकी हेडलाईन तयार करा.बातमी:"
+Predicted: "दिलेल्या मराठी बातमीवरून मुख्य घटना दर्शवणारी थोडक्यात आणि नेमकी हेडलाईन तयार करा.बातमी: वार्ताहर दिलेल्या मराठी बातमीवरून पो�"
+Confidence: 0.85
 ```
 
 ---
@@ -404,10 +379,10 @@ Confidence: 0.XX
 - [ ] Training strategy explained
 - [ ] Hyperparameters justified:
   - Learning rate: 5e-5
-  - Batch size: 16 (effective 32)
+  - Batch size: 32 (effective 64)
   - Dropout: default
   - Optimizer: AdamW
-- [ ] Number of epochs: 30 (with early stopping)
+- [ ] Number of epochs: 15 and 70 (with early stopping)
 - [ ] Early stopping implementation (patience=3)
 - [ ] Checkpointing strategy
 
@@ -479,25 +454,24 @@ All external resources used in this project:
   "team_name": "[Your Team Name]",
   "members": [
     {
-      "name": "[Member 1]",
-      "roll_number": "[Roll 1]"
+      "name": "Ashna Hussain",
+      "roll_number": "M250279CS"
     },
     {
-      "name": "[Member 2]",
-      "roll_number": "[Roll 2]"
+      "name": "Syed Afham K",
+      "roll_number": "M250540CS"
     }
   ],
   "external_resources": {
     "pretrained_models": ["gpt2"],
     "libraries": ["transformers", "torch", "datasets"],
-    "hardware": "[GPU type]",
-    "compute_time": "[X hours]"
+    "hardware": "[GPU type]"
   },
   "random_seeds": {
     "training": 42,
     "evaluation": 42
   },
-  "date_submitted": "2025-11-03"
+  "date_submitted": "2025-11-27"
 }
 ```
 
@@ -534,8 +508,7 @@ This model is released for educational purposes only.
 ## 📞 Contact
 
 For questions or issues:
-- **Team:** [Your Team Name]
-- **Email:** [your.email@example.com]
+- **Email:** ashna_m250279cs@nitc.ac.in or syed_m250279cs@nitc.ac.in
 - **Course:** CS6320E - NLP
 
 ---
@@ -549,5 +522,5 @@ For questions or issues:
 
 ---
 
-**Last Updated:** [Date]  
-**Submission Deadline:** November 3, 2025
+**Last Updated:** 27/11/2025  
+
